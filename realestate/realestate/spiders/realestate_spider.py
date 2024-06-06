@@ -17,10 +17,12 @@ class MySpider(scrapy.Spider):
         options.add_argument("--disable-dev-shm-usage")
         self.driver = uc.Chrome(options=options)
 
+
     def parse(self, response):
         self.driver.get(response.url)
         html = self.driver.page_source
 
+        # Контекстный менеджер который выводит текущую html страницу (выводит капчу, и поэтому незнаю как выполнить задание)
         with open('page.html', 'w', encoding='utf-8') as f:
             f.write(html)
 
